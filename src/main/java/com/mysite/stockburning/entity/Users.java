@@ -31,6 +31,7 @@ public class Users extends BaseEntity{
     @Column(unique = true)
     private String email;
 
+    @Builder.Default
     private String profilePicture = "default_img";
 
     @Builder.Default
