@@ -33,13 +33,16 @@ public class Users extends BaseEntity{
 
     private String profilePicture = "default_img";
 
+    @Builder.Default
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Posts> posts = new ArrayList<>();
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserRole role = UserRole.USER; // 역할 (default: USER)
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ProviderType providerType = ProviderType.LOCAL;

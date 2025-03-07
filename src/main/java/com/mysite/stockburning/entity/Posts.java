@@ -28,9 +28,11 @@ public class Posts extends BaseEntity{
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
+    @Builder.Default
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true) //질문이 삭제되면 댓글도 삭제되도록
     private List<Comments> comments = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostLikes>  likes = new ArrayList<>();
 
