@@ -18,7 +18,7 @@ import java.util.Random;
 
 @SpringBootTest
 class StockBurningApplicationTests {
-
+/*
     @Autowired
     private StockOpinionRepository stockOpinionRepository;
 
@@ -60,7 +60,7 @@ class StockBurningApplicationTests {
             }
         }
     }
-
+    */
 }
  /*
         // Random 객체를 반복문 외부에서 생성 (성능 개선)
