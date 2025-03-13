@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry){
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080")  // 클라이언트 주소
+                .allowedOrigins("http://www.stockburning.shop")  // 클라이언트 주소
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Authorization", "Content-Type", "Accept")
                 .allowCredentials(true)  //클라이언트가 쿠키 또는 인증정보를 요청에 포함할 수 있음
