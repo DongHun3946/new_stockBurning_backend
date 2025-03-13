@@ -22,7 +22,6 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthController {
     private final JwtProvider jwtProvider;
-    private final UserService userService;
 
     @PostMapping("/refresh")
     public ResponseEntity<?> refreshAccessToken(HttpServletRequest request, HttpServletResponse response) {

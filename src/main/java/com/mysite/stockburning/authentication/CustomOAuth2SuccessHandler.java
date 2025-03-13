@@ -40,7 +40,7 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
         response.setHeader("Authorization", "Bearer " + tokenResponse.accessToken());
         setRefreshTokenCookie(response, tokenResponse.refreshToken());
 
-        response.sendRedirect("http://localhost:8080/");
+        response.sendRedirect("http://www.stockburning.shop/");
     }
     private void setRefreshTokenCookie(HttpServletResponse response, String refreshToken){
         Cookie cookie = new Cookie("refreshToken", refreshToken);
