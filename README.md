@@ -61,5 +61,5 @@
 
 
 ## ✒️ 사용한 API
-- QQQ, SPY 가격 : https://www.openstreetmap.org/#map=13/38.00306/128.65213
+- QQQ, SPY 가격 : [https://finnhub.io/](https://finnhub.io/)
 
