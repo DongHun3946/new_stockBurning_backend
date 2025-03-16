@@ -18,7 +18,7 @@ import java.util.Random;
 
 @SpringBootTest
 class StockBurningApplicationTests {
-/*
+
     @Autowired
     private StockOpinionRepository stockOpinionRepository;
 
@@ -45,7 +45,7 @@ class StockBurningApplicationTests {
 
         for(StockTickers ticker : stockTickerOpt){
 
-            for (int i = 1; i <= 2; i++) {
+            for (int i = 5; i <= 14; i++) {
                 LocalDate date = LocalDate.of(2025, 3, i);
 
                 StockOpinionStats stats = StockOpinionStats.builder()
@@ -60,7 +60,7 @@ class StockBurningApplicationTests {
             }
         }
     }
-    */
+
 }
  /*
         // Random 객체를 반복문 외부에서 생성 (성능 개선)

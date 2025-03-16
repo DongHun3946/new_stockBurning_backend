@@ -27,7 +27,7 @@ public class UserService {
     public Long createUser(SignupRequest request){
         validateRequest(request); //유효성 검사(아이디, 이메일, 닉네임 중복)
         String encryptedPassword = passwordEncryptor.encrypt(request.userPw()); //비밀번호 암호화
-        Users user = new Users(
+        Users user = Users.of(
                 request.nickName(),
                 request.userId(),
                 encryptedPassword,

@@ -20,7 +20,7 @@ import java.net.URI;
 public class UserSignupController {
     private final UserService userService;
 
-    @PostMapping //회원가입 (회원 생성 로직) http://localhost:8081/api/signup/users/{userId}
+    @PostMapping //회원가입 (회원 생성 로직)
     public ResponseEntity<Void> signup(@Valid @RequestBody SignupRequest request){
         return ResponseEntity.created(URI.create("/users/" + userService.createUser(request))).build();
     }

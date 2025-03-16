@@ -51,12 +51,13 @@ public class Users extends BaseEntity{
     private Long providerId;
 
     // 기본 생성자 (id는 null로 설정)
-    public Users(String nickName, String userId, String userPw, String email) {
-        this.id = null;
-        this.nickName = nickName;
-        this.userId = userId;
-        this.userPw = userPw;
-        this.email = email;
+    public static Users of(String nickName, String userId, String userPw, String email) {
+        return Users.builder()
+                .nickName(nickName)
+                .userId(userId)
+                .userPw(userPw)
+                .email(email)
+                .build();
     }
     public static Users of(Long id, String nickName, String userId){
         return Users.builder()
