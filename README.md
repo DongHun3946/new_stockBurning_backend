@@ -61,5 +61,5 @@
 
 
 ## ✒️ 사용한 API
-- QQQ, SPY 가격 : [https://finnhub.io/](https://finnhub.io/)
+- QQQ, SPY 지수 : [https://finnhub.io/](https://finnhub.io/)
 
