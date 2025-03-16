@@ -14,7 +14,7 @@
 ## 💻 개발환경
 - Version : Java 17
 - IDE : IntelliJ
-- Framework : SpringBoot 3.3.1
+- Framework : SpringBoot 3.4.0
 - ORM : JPA
   
 ## ⚙️ 기술 스택
