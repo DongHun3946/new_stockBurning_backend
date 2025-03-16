@@ -7,23 +7,28 @@
 
 ## ⏲️ 개발 기간
 - 2024/12/30 ~
+- 
 ## 🧑‍🤝‍🧑 개발자 소개
 - 최동훈
+- 
 ## 💻 개발환경
 - Version : Java 17
 - IDE : IntelliJ
 - Framework : SpringBoot 3.3.1
 - ORM : JPA
+- 
 ## ⚙️ 기술 스택
 - 프론트엔드 : Vue.js
 - 백엔드 : Spring Boot
+- WS/WAS : Tomcat
 - 실시간 데이터 처리 : Kafka, Redis
 - 캐시 : Redis
 - 서버 배포 : Amazon EC2
 - 데이터베이스 : Amazon RDS(mysql)
 - 이미지 파일 저장 및 관리 : Amazon S3
-- WS/WAS : Tomcat
-
+- 프록시 : nginx
+- 인증 및 권한 부여 : Oauth2, JWT
+- 
 ## 🚀 StockBurning 웹사이트 주요 기능
 
 
