@@ -45,7 +45,7 @@ class StockBurningApplicationTests {
 
         for(StockTickers ticker : stockTickerOpt){
 
-            for (int i = 5; i <= 14; i++) {
+            for (int i = 15; i <= 15; i++) {
                 LocalDate date = LocalDate.of(2025, 3, i);
 
                 StockOpinionStats stats = StockOpinionStats.builder()
