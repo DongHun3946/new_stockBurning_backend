@@ -48,6 +48,10 @@
 
 
 ## 📝 와이어프레임(화면 구성)
+- 전체 구성
+![image](https://github.com/user-attachments/assets/b91347f6-1896-4c67-817a-19519892d63b)
+
+- 세부 구성
 ![image](https://github.com/user-attachments/assets/28e8bf42-082d-438f-86fb-b9b26d9201a9)
 ![image](https://github.com/user-attachments/assets/e2f64f50-945e-4b04-9f88-c969d7b2da80)
 ![image](https://github.com/user-attachments/assets/9d59f301-728b-4726-880e-183130875d0a)
