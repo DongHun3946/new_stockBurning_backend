@@ -37,7 +37,7 @@ public class SecurityConfig{
         http
                 .oauth2Login((oauth2) -> oauth2
                         .loginPage("/login")
-                        .redirectionEndpoint((endpoint) -> endpoint.baseUri("/oauth/kakao/authorization")) //인가코드를 반환하는 리다이렉션 URL
+                        .redirectionEndpoint((endpoint) -> endpoint.baseUri("https://www.stockburning.shop/oauth/kakao/authorization")) //인가코드를 반환하는 리다이렉션 URL
                         .userInfoEndpoint((endpoint) -> endpoint.userService(customOAuth2UserService)) //로그인 후 카카오는 액세스 토큰을 반환하고 이를 사용하여 사용자 정보를 가져오는 과정을 CustomOAuth2UserService 에서 처리
                         .successHandler(customOAuth2SuccessHandler));
 
