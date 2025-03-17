@@ -36,7 +36,7 @@ public class SecurityConfig{
 
         http
                 .requiresChannel(channel ->
-                        channel.anyRequest().requiresSecure());
+                        channel.anyRequest().requiresSecure()); //HTTP 요청은 자동으로 HTTPS 로 리다이렉션
 
         http
                 .oauth2Login((oauth2) -> oauth2
