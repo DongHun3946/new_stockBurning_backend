@@ -29,7 +29,7 @@ public class KakaoLoginController {
     }*/
 
 
-
+/*
     @GetMapping("/oauth/kakao/authorization")
     public void getKakaoAccessToken(@RequestParam("code") String code){ //인가코드를 받아서 accessToken 요청
         RestTemplate restTemplate = new RestTemplate();
@@ -57,6 +57,8 @@ public class KakaoLoginController {
         //restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Void.class);
 
     }
+
+ */
 }
 
 
