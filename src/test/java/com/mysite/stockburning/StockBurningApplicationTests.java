@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -43,9 +44,10 @@ class StockBurningApplicationTests {
         // Optional 체크 후 안전하게 처리
         List<StockTickers> stockTickerOpt = stockSearchService.getAllStock();
 
+
         for(StockTickers ticker : stockTickerOpt){
 
-            for (int i = 15; i <= 15; i++) {
+            for (int i = 7; i <= 15; i++) {
                 LocalDate date = LocalDate.of(2025, 3, i);
 
                 StockOpinionStats stats = StockOpinionStats.builder()
@@ -60,7 +62,6 @@ class StockBurningApplicationTests {
             }
         }
     }
-
 }
  /*
         // Random 객체를 반복문 외부에서 생성 (성능 개선)

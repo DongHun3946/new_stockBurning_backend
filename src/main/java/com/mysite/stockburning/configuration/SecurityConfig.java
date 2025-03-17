@@ -33,6 +33,11 @@ public class SecurityConfig{
         http
                 .csrf((auth) -> auth.disable());
 
+
+        http
+                .requiresChannel(channel ->
+                        channel.anyRequest().requiresSecure());
+
         http
                 .oauth2Login((oauth2) -> oauth2
                         .loginPage("/login")
@@ -46,12 +51,11 @@ public class SecurityConfig{
                                 .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
                                 .anyRequest().permitAll());
 
+
         http
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 
         return http.build();
     }
-
-
 }
