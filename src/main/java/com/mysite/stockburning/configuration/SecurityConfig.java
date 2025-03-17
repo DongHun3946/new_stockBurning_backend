@@ -35,10 +35,6 @@ public class SecurityConfig{
 
 
         http
-                .requiresChannel(channel ->
-                        channel.anyRequest().requiresSecure()); //HTTP 요청은 자동으로 HTTPS 로 리다이렉션
-
-        http
                 .oauth2Login((oauth2) -> oauth2
                         .loginPage("/login")
                         .redirectionEndpoint((endpoint) -> endpoint.baseUri("/oauth/kakao/authorization")) //인가코드를 반환하는 리다이렉션 URL
