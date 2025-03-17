@@ -36,7 +36,6 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         //OAuth2 서버(카카오)에서 액세스 토큰을 이용해 사용자 정보를 가져옴
         OAuth2User oAuth2User = super.loadUser(userRequest);
 
-        System.out.println("[OAuth2UserService]");
         //Oauth2 제공자 정보 가져오기(ex google, kakao, naver)
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
