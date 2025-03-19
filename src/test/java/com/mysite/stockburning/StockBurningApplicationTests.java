@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 
-@SpringBootTest
+@SpringBootTest(classes = StockBurningApplicationTests.class)
 class StockBurningApplicationTests {
 
     @Autowired
