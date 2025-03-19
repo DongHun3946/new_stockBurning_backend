@@ -15,7 +15,7 @@ public class RedisConfig {
 
     @Bean //Redis 서버와 포트 설정
     public RedisConnectionFactory redisConnectionFactory(){
-        return new LettuceConnectionFactory("43.201.30.136", 6379);
+        return new LettuceConnectionFactory("3.39.11.83", 6379);
     }
     @Bean
     public RedisTemplate<String, Object> redisTemplate(){
