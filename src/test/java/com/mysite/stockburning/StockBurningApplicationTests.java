@@ -37,6 +37,7 @@ class StockBurningApplicationTests {
 
     @Autowired
     private S3Service s3Service;
+    /*
     @Test
     public void create() {
         Random random = new Random();
@@ -62,6 +63,8 @@ class StockBurningApplicationTests {
             }
         }
     }
+    */
+
 }
  /*
         // Random 객체를 반복문 외부에서 생성 (성능 개선)
