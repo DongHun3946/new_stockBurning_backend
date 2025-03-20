@@ -45,6 +45,7 @@ public class StockOpinionStats{
                 .bullishCnt(bullishCnt)
                 .bearishCnt(bearishCnt)
                 .postCount(postCount)
+                .createdAt(LocalDate.now())
                 .build();
     }
 }

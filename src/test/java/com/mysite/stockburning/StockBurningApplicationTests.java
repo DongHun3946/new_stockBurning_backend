@@ -37,7 +37,7 @@ class StockBurningApplicationTests {
 
     @Autowired
     private S3Service s3Service;
-    /*
+
     @Test
     public void create() {
         Random random = new Random();
@@ -48,7 +48,7 @@ class StockBurningApplicationTests {
 
         for(StockTickers ticker : stockTickerOpt){
 
-            for (int i = 7; i <= 15; i++) {
+            for (int i = 12; i <= 19; i++) {
                 LocalDate date = LocalDate.of(2025, 3, i);
 
                 StockOpinionStats stats = StockOpinionStats.builder()
@@ -63,7 +63,7 @@ class StockBurningApplicationTests {
             }
         }
     }
-    */
+
 
 }
  /*
