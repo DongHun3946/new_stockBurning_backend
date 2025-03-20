@@ -50,7 +50,7 @@ public class StockOpinionService {
     @Scheduled(cron = "0 59 23 * * ?") //초(0) 분(0) 시(0) 일(*) 월(*) 요일(?)
     public void collectDailyData() {
         log.info("일일 게시글, 상승/하락 의견 데이터 수집 시작");
-        List<StockTickers> allStockEntity = stockSearchService.getAllStock(); //
+        List<StockTickers> allStockEntity = stockSearchService.getAllStock();
         for (StockTickers stockTickers : allStockEntity) {
             try {
                 log.info("수집할 종목 리스트 : {}", stockTickers.getStockSymbol());
