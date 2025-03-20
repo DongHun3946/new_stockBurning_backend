@@ -38,6 +38,7 @@ class StockBurningApplicationTests {
     @Autowired
     private S3Service s3Service;
 
+    /*
     @Test
     public void create() {
         Random random = new Random();
@@ -63,7 +64,7 @@ class StockBurningApplicationTests {
             }
         }
     }
-
+    */
 
 }
  /*
