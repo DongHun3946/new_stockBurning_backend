@@ -38,8 +38,8 @@ class StockBurningApplicationTests {
     @Autowired
     private S3Service s3Service;
 
-    /*
 
+    /*
     @Test
     public void create() {
         Random random = new Random();
@@ -50,7 +50,7 @@ class StockBurningApplicationTests {
 
         for(StockTickers ticker : stockTickerOpt){
 
-            for (int i = 12; i <= 19; i++) {
+            for (int i = 20; i <= 20; i++) {
                 LocalDate date = LocalDate.of(2025, 3, i);
 
                 StockOpinionStats stats = StockOpinionStats.builder()
@@ -65,8 +65,8 @@ class StockBurningApplicationTests {
             }
         }
     }
-    */
 
+    */
 }
  /*
         // Random 객체를 반복문 외부에서 생성 (성능 개선)
