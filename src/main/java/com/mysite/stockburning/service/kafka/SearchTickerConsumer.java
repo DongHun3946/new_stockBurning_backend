@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class SearchTickerConsumer {
     private final SearchTickerRank searchTickerRank;
 
-    @KafkaListener(topics = "stock_search_topic", groupId = "search-consumer-group")
+    @KafkaListener(topics = "stock_search_topic", groupId = "search-consumer-group1")
     public void consumeSearchQuery(String ticker) { //Consumer 가 메시지를 받아 Redis 에서 검색 횟수 증가
         searchTickerRank.increaseSearchCount(ticker);
     }
