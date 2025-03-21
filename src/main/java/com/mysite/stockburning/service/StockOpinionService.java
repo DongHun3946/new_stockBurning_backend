@@ -41,7 +41,7 @@ public class StockOpinionService {
                 redisTemplate.opsForZSet().add(BEARISH_OPINION, ticker, 0);
             }
         } catch (Exception e) {
-            log.error("initialDailyData(0 메소드 에러 발생 : ", e);
+            log.error("initialDailyData() 메소드 에러 발생 : ", e);
         }
         log.info("모든 티커의 redis 값 초기화 완료");
     }

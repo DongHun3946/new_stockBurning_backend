@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Random;
 
 
-@SpringBootTest(classes = StockBurningApplicationTests.class)
+@SpringBootTest
 class StockBurningApplicationTests {
 
     @Autowired
@@ -39,6 +39,7 @@ class StockBurningApplicationTests {
     private S3Service s3Service;
 
     /*
+
     @Test
     public void create() {
         Random random = new Random();
