@@ -64,7 +64,10 @@
 
 
 ## 📝 구현(화면 구성)
+- 메인화면 (비로그인 상태)
 ![1](https://github.com/user-attachments/assets/3f820c2c-b010-46fb-9e14-db44defb3ac2)
+- 메인화면 (로그인 상태)
+![2](https://github.com/user-attachments/assets/46b6c8aa-c023-4ce9-82ac-ee8bed7378df)
 
 
 ## 📌 배운점
