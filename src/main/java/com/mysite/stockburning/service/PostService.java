@@ -15,6 +15,7 @@ import com.mysite.stockburning.repository.UserRepository;
 import com.mysite.stockburning.authentication.CustomUserDetails;
 import com.mysite.stockburning.util.Opinion;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -142,7 +144,9 @@ public class PostService {
                 .orElseThrow(()->new IllegalArgumentException("게시글이 존재하지 않습니다."));
         if(!post.getUsers().getId().equals(userId))
             throw new AccessDeniedException("게시글을 수정할 권한이 없습니다.");
+        log.info("여기 : 1");
         s3Service.deleteS3Image(post.getImagePath());
+        log.info("여기 : 2");
         this.postRepository.delete(post);
         return true;
     }

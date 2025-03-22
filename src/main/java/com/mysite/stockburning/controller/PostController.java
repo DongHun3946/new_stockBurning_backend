@@ -108,12 +108,10 @@ public class PostController {
         boolean isDeleted = false;
         if(customUserDetails != null){
             CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-            System.out.println("일반 로그인 사용자입니다: " + userDetails.getUsername());
             isDeleted = postService.delete(postId, userDetails.getId());
         }
         if(customOAuth2User != null){
             CustomOAuth2User oauth2User = (CustomOAuth2User) authentication.getPrincipal();
-            System.out.println("OAuth2 로그인 사용자입니다: " + oauth2User.getName());
             isDeleted = postService.delete(postId, oauth2User.getId());
         }
 
