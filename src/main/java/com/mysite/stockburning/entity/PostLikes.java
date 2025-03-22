@@ -23,7 +23,7 @@ public class PostLikes {
     @JoinColumn(name = "posts_id" , nullable = false)
     private Posts posts;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id", nullable = false)
     private Users users;
 

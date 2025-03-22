@@ -39,6 +39,10 @@ public class Users extends BaseEntity{
     private List<Posts> posts = new ArrayList<>();
 
     @Builder.Default
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PostLikes> postLikes = new ArrayList<>();
+
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserRole role = UserRole.USER; // 역할 (default: USER)
