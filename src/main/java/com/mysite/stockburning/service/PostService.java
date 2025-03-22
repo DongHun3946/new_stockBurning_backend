@@ -144,9 +144,8 @@ public class PostService {
                 .orElseThrow(()->new IllegalArgumentException("게시글이 존재하지 않습니다."));
         if(!post.getUsers().getId().equals(userId))
             throw new AccessDeniedException("게시글을 수정할 권한이 없습니다.");
-        log.info("여기 : 1");
-        s3Service.deleteS3Image(post.getImagePath());
-        log.info("여기 : 2");
+        if(post.getImagePath()!=null)
+            s3Service.deleteS3Image(post.getImagePath());
         this.postRepository.delete(post);
         return true;
     }
