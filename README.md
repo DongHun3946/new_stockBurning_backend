@@ -95,7 +95,10 @@
 ![image](https://github.com/user-attachments/assets/abc130ab-8b0a-4aff-b113-441231857dd1)
 
 ## 📝 구현(동영상)
-https://github.com/user-attachments/assets/89e63608-08ec-43e2-be7b-91c9688ee7b2
+- 회원가입 영상
+https://github.com/user-attachments/assets/3d96fb9c-b3d7-4a29-ab03-ff5b64fc9b4f
+
+
 
 
 
