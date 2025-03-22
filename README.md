@@ -70,6 +70,12 @@
 ![2](https://github.com/user-attachments/assets/46b6c8aa-c023-4ce9-82ac-ee8bed7378df)
 - 로그인 화면
 ![image](https://github.com/user-attachments/assets/d9cd722d-5bb2-498d-b004-3bf7b7171c8f)
+- 회원가입 화면
+![image](https://github.com/user-attachments/assets/d1abe1ea-ecb5-4336-96d3-2728ef2964ea)
+- 아이디 찾기 화면
+![image](https://github.com/user-attachments/assets/e8d1bed6-9938-4beb-8098-6f0b95205ecc)
+- 비밀번호 찾기 화면
+![image](https://github.com/user-attachments/assets/3acc4b62-6a38-4357-baad-39b6f6d57ded)
 
 
 ## 📌 배운점
