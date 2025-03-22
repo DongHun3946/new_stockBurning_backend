@@ -64,22 +64,16 @@ public class S3Service {
         }
     }
     public void deleteS3Image(String imagePath){
-        String[] parts = imagePath.split("/");
-        if (parts.length < 5) {
-            log.error("Invalid image path: " + imagePath);
-            return;
-        }
-        String folderName = parts[parts.length - 2];  // post_image
-        String fileName = parts[parts.length - 1];  // 9351359b-99c2-4481-83de-1141c8534cf1
+        String folderName = imagePath.split("/")[3];
+        String fileName = imagePath.split("/")[4];
         String result = folderName + "/" + fileName;
         try{
             s3Config.amazonS3Client().deleteObject(new DeleteObjectRequest(bucketName, result));
         }catch(AmazonServiceException e){
-            log.error("S3 게시글 이미지 삭제 중 오류 발생");
+            log.error("S3 게시글 이미지 삭제 중 오류 발생 : " +  e.getErrorMessage());
         }catch(SdkClientException e){
-            log.error("S3 게시글 이미지 클라이언트 오류 발생");
+            log.error("S3 게시글 이미지 클라이언트 오류 발생 : " + e.getMessage());
         }
-
     }
 
 }
