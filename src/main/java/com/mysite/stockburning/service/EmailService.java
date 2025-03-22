@@ -41,6 +41,21 @@ public class EmailService {
         message.setFrom(new InternetAddress("cdh3946@gmail.com", "StockBurning"));
         javaMailSender.send(message);
     }
+    public void verifyUserEmail(String receiver, String code) throws MessagingException, UnsupportedEncodingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        message.setRecipients(Message.RecipientType.TO, receiver);
+        message.setSubject("StockBurning 아이디찾기 인증코드");
+
+        StringBuilder mailContent = new StringBuilder();
+        mailContent.append("<div>");
+        mailContent.append("인증코드를 확인해주세요.<br><strong style=\"font-size: 30px;\">");
+        mailContent.append(code);
+        mailContent.append("</strong><br>이메일 인증 절차에 따라 이메일 인증코드를 발급해드립니다.<br>인증코드는 이메일 발송 시점으로부터 3분동안 유효합니다.");
+
+        message.setText(mailContent.toString(), "utf-8", "html");
+        message.setFrom(new InternetAddress("cdh3946@gmail.com", "StockBurning"));
+        javaMailSender.send(message);
+    }
     public void sendTempPasswd(String receiver, String tempPasswd) throws MessagingException, UnsupportedEncodingException {
         MimeMessage message = javaMailSender.createMimeMessage();
         message.setRecipients(Message.RecipientType.TO, receiver);
