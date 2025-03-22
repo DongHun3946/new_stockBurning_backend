@@ -10,6 +10,7 @@ import com.mysite.stockburning.exception.BadRequestException;
 import com.mysite.stockburning.repository.UserRepository;
 import com.mysite.stockburning.util.ProviderType;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -114,13 +116,15 @@ public class UserService {
     public void deleteUser(Long id){
         Users user = userRepository.findById(id).orElse(null);
         assert user!=null;
-        if(!user.getProfilePicture().equals("default_img"))
+        if(!user.getProfilePicture().equals("default_img")){
+            log.info("1111111");
             s3Service.deleteS3Image(user.getProfilePicture());
-
+        }
         for(Posts post : user.getPosts()){
+            log.info("2222222");
             s3Service.deleteS3Image(post.getImagePath());
         }
-
+        log.info("3333333");
         this.userRepository.delete(user);
     }
     public void validateRequest(SignupRequest request){ //유효성 검사 메소드

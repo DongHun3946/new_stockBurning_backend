@@ -36,7 +36,9 @@ public class UserDeleteController {
             }if(customUserDetails != null){
                 id= customUserDetails.getId();
             }
+            log.info("4444444");
             userService.deleteUser(id);
+            log.info("5555555");
             jwtProvider.removeRefreshToken(response);
             return ResponseEntity.status(HttpStatus.OK).build();
         }catch(Exception e){
