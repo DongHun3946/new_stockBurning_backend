@@ -106,32 +106,32 @@ https://github.com/user-attachments/assets/3d96fb9c-b3d7-4a29-ab03-ff5b64fc9b4f
 https://github.com/user-attachments/assets/59115b4f-cd25-4f5f-8781-b923d30da1ad
 
 
-### 게시글 삭제 및 수정
+### 3️⃣ 게시글 삭제 및 수정
 
 https://github.com/user-attachments/assets/65216202-f400-4c50-acb3-b51d6cce08b5
 
 
-### 아이디 찾기
+### 4️⃣ 아이디 찾기
 
 
 
-### 비밀번호 찾기
+### 5️⃣ 비밀번호 찾기
 
 
 
-### 비밀번호 변경
+### 6️⃣ 비밀번호 변경
 
 
 
-### 닉네임 변경
+### 7️⃣ 닉네임 변경
 
 
 
-### 프로필 사진 변경
+### 8️⃣ 프로필 사진 변경
 
 
 
-### 계정 탈퇴
+### 9️⃣ 계정 탈퇴
 
 
 
