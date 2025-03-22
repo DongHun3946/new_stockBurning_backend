@@ -64,8 +64,13 @@ public class S3Service {
         }
     }
     public void deleteS3Image(String imagePath){
-        String folderName = imagePath.split("/")[3];
-        String fileName = imagePath.split("/")[4];
+        String[] parts = imagePath.split("/");
+        if (parts.length < 5) {
+            log.error("Invalid image path: " + imagePath);
+            return;
+        }
+        String folderName = parts[parts.length - 2];  // post_image
+        String fileName = parts[parts.length - 1];  // 9351359b-99c2-4481-83de-1141c8534cf1
         String result = folderName + "/" + fileName;
         try{
             s3Config.amazonS3Client().deleteObject(new DeleteObjectRequest(bucketName, result));
