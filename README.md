@@ -95,15 +95,18 @@
 ![image](https://github.com/user-attachments/assets/abc130ab-8b0a-4aff-b113-441231857dd1)
 
 ## 📝 구현(동영상)
-###회원가입
+### 회원가입
 
 https://github.com/user-attachments/assets/3d96fb9c-b3d7-4a29-ab03-ff5b64fc9b4f
 
-###게시글 작성 및 티커 검색
+### 게시글 작성 및 티커 검색
 
 https://github.com/user-attachments/assets/59115b4f-cd25-4f5f-8781-b923d30da1ad
 
-###게시글 삭제 및 수정
+### 게시글 삭제 및 수정
+
+https://github.com/user-attachments/assets/65216202-f400-4c50-acb3-b51d6cce08b5
+
 
 
 
