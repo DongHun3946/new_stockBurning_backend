@@ -68,6 +68,8 @@
 ![1](https://github.com/user-attachments/assets/3f820c2c-b010-46fb-9e14-db44defb3ac2)
 - 메인화면 (로그인 상태)
 ![2](https://github.com/user-attachments/assets/46b6c8aa-c023-4ce9-82ac-ee8bed7378df)
+- 로그인 화면
+![image](https://github.com/user-attachments/assets/d9cd722d-5bb2-498d-b004-3bf7b7171c8f)
 
 
 ## 📌 배운점
