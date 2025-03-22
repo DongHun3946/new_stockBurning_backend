@@ -155,6 +155,15 @@ https://github.com/user-attachments/assets/efe74dc0-174c-4f41-aef4-d7a38c7e0f94
 
 
 
+---
+### 9️⃣ 좋아요 기능 및 댓글 작성
+
+https://github.com/user-attachments/assets/fb03c64a-4649-4321-8eae-8379a5231f54
+
+
+
+
+
 ## 📌 배운점
 
 
