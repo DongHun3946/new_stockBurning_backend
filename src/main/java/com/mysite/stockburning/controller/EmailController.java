@@ -35,7 +35,7 @@ public class EmailController {
             if(userService.isEmailDuplication(email)) {
                 return ResponseEntity.ok(new EmailResponse(false, "이미 존재하는 이메일입니다."));
             }
-            String code = emailService.generateCode(); //인증코드 생성
+            String code = emailService.generateCode(); //인증코드 생성.
             emailService.sendEmail(email, code, "회원가입");       //사용자 이메일로 인증코드 보냄
             redisTemplate.opsForValue().set(email,code, CODE_EXPIRATION_TIME, TimeUnit.SECONDS);
             return ResponseEntity.ok(new EmailResponse(true, "인증코드가 전송되었습니다."));
