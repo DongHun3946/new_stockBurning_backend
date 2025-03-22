@@ -95,7 +95,7 @@
 ![image](https://github.com/user-attachments/assets/abc130ab-8b0a-4aff-b113-441231857dd1)
 
 ## 📝 구현(동영상)
-#회원가입
+회원가입
 
 https://github.com/user-attachments/assets/3d96fb9c-b3d7-4a29-ab03-ff5b64fc9b4f
 
