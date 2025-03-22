@@ -1,5 +1,6 @@
 package com.mysite.stockburning.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +13,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 public class RedisConfig {
+    @Value("${spring.data.redis.host}")
+    private String redisServer;
 
     @Bean //Redis 서버와 포트 설정
     public RedisConnectionFactory redisConnectionFactory(){
-        return new LettuceConnectionFactory("54.180.150.253", 6379);
+        return new LettuceConnectionFactory(redisServer, 6379);
     }
     @Bean
     public RedisTemplate<String, Object> redisTemplate(){
