@@ -129,8 +129,11 @@ https://github.com/user-attachments/assets/f2032d45-e00d-4ba0-9b78-e20b6ffe1722
 https://github.com/user-attachments/assets/015e8d13-cf49-487a-addb-bb947f470c04
 
 
-
+---
 ### 6️⃣ 비밀번호 변경
+
+https://github.com/user-attachments/assets/7a9a03c4-e5de-4bf2-877d-9fba60c39661
+
 
 
 
