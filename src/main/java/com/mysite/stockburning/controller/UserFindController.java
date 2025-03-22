@@ -54,7 +54,7 @@ public class UserFindController {
             }
             redisTemplate.delete(email);
             String code = emailService.generateCode(); //인증코드 생성
-            emailService.verifyUserEmail(email, code);       //사용자 이메일로 인증코드 보냄
+            emailService.sendEmail(email, code, "아이디 찾기");       //사용자 이메일로 인증코드 보냄
             redisTemplate.opsForValue().set(email,code, CODE_EXPIRATION_TIME, TimeUnit.SECONDS);
             return ResponseEntity.ok(new EmailResponse(true, "인증코드가 전송되었습니다."));
         }catch(MessagingException | UnsupportedEncodingException e){
@@ -93,7 +93,7 @@ public class UserFindController {
                 return ResponseEntity.ok(new EmailResponse(false, "존재하지 않는 유저정보 입니다."));
             }
             String code = emailService.generateCode();
-            emailService.sendEmail(email, code);
+            emailService.sendEmail(email, code, "비밀번호 찾기");
             redisTemplate.opsForValue().set(email, code, CODE_EXPIRATION_TIME, TimeUnit.SECONDS);
             return ResponseEntity.ok(new EmailResponse(true, "인증코드가 전송되었습니다."));
         }catch(Exception e){
