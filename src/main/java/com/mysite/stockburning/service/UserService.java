@@ -122,7 +122,9 @@ public class UserService {
         }
         for(Posts post : user.getPosts()){
             log.info("2222222");
-            s3Service.deleteS3Image(post.getImagePath());
+            if(post.getImagePath() != null){
+                s3Service.deleteS3Image(post.getImagePath());
+            }
         }
         log.info("3333333");
         this.userRepository.delete(user);
