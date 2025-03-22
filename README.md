@@ -96,19 +96,26 @@
 
 ## 📝 구현(동영상)
 
+---
 ### 1️⃣ 회원가입
 
 https://github.com/user-attachments/assets/3d96fb9c-b3d7-4a29-ab03-ff5b64fc9b4f
 
 
+
+---
 ### 2️⃣ 게시글 작성 및 티커 검색
 
 https://github.com/user-attachments/assets/59115b4f-cd25-4f5f-8781-b923d30da1ad
 
 
+
+---
 ### 3️⃣ 게시글 삭제 및 수정
 
 https://github.com/user-attachments/assets/65216202-f400-4c50-acb3-b51d6cce08b5
+
+
 
 ---
 ### 4️⃣ 아이디 찾기
