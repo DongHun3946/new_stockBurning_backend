@@ -45,13 +45,10 @@ public class StockSearchController {
                 if ("bestPost".equals(type)) {
                     postDTOS = postService.readBestPost("null");
                 } else {
-                    log.info("기본 게시글 출력");
                     postDTOS = postService.readDefault();
                 }
-                log.info("1");
                 return ResponseEntity.ok(postDTOS);
             } else {
-                log.info("2");
                 Optional<StockTickers> stockTickers = stockSearchService.getStockByTicker(ticker);
                 if (stockTickers.isEmpty()) {
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -65,17 +62,14 @@ public class StockSearchController {
 
                 StockDataDTO stockDataDTO = webScrapingService.scrapeStockData(stockTicker);
                 LocalDate date = LocalDate.now();
-                log.info("3");
+
                 int postCount = stockOpinionService.getRealtimePostCount(stockTicker.getStockSymbol());
                 int bullishCnt = stockOpinionService.getRealtimeBullishOpinion(stockTicker.getStockSymbol());
                 int bearishCnt = stockOpinionService.getRealtimeBearishOpinion(stockTicker.getStockSymbol());
-                log.info("4");
+
                 RealtimeStatDTO realtimeStatDTO = new RealtimeStatDTO(date, postCount, bullishCnt, bearishCnt);
-                log.info("5");
                 List<WeeklyPostCountDTO> weeklyPostCountDTO = WeeklyPostCountDTO.of(stockOpinionService.getWeeklyPostCount(stockTicker.getStockSymbol()), realtimeStatDTO);
-                log.info("6");
                 DataBundleDTO stockPostDTO = new DataBundleDTO(stockDataDTO, postDTOS, realtimeStatDTO, weeklyPostCountDTO);
-                log.info("7");
                 return ResponseEntity.ok(stockPostDTO);
             }
         } catch (Exception e) {
@@ -88,6 +82,7 @@ public class StockSearchController {
             Optional<StockTickers> stockTickers = stockSearchService.getStockByTicker(ticker);
             if(stockTickers.isPresent()){
                 searchTickerProducer.sendSearchQuery(ticker);
+                log.info("검색량 +1");
                 return ResponseEntity.ok().build();
             }else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("존재하지 않는 티커입니다.");
