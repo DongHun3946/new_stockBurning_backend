@@ -142,12 +142,16 @@ https://github.com/user-attachments/assets/7a9a03c4-e5de-4bf2-877d-9fba60c39661
 https://github.com/user-attachments/assets/53ca2484-366e-4b55-811f-0161ebcf8ee8
 
 
-
+---
 ### 8️⃣ 프로필 사진 변경
 
+https://github.com/user-attachments/assets/810fc231-b5c7-477b-b2f2-1053d857dcc7
 
 
+---
 ### 9️⃣ 계정 탈퇴
+
+https://github.com/user-attachments/assets/efe74dc0-174c-4f41-aef4-d7a38c7e0f94
 
 
 
