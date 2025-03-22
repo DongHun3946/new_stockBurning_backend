@@ -136,8 +136,10 @@ https://github.com/user-attachments/assets/7a9a03c4-e5de-4bf2-877d-9fba60c39661
 
 
 
-
+---
 ### 7️⃣ 닉네임 변경
+
+https://github.com/user-attachments/assets/53ca2484-366e-4b55-811f-0161ebcf8ee8
 
 
 
