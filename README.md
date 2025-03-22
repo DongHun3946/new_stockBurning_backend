@@ -99,6 +99,10 @@
 
 https://github.com/user-attachments/assets/3d96fb9c-b3d7-4a29-ab03-ff5b64fc9b4f
 
+게시글 작성 및 티커 검색
+
+https://github.com/user-attachments/assets/59115b4f-cd25-4f5f-8781-b923d30da1ad
+
 
 
 
