@@ -110,8 +110,10 @@ https://github.com/user-attachments/assets/59115b4f-cd25-4f5f-8781-b923d30da1ad
 
 https://github.com/user-attachments/assets/65216202-f400-4c50-acb3-b51d6cce08b5
 
-
+---
 ### 4️⃣ 아이디 찾기
+
+https://github.com/user-attachments/assets/f2032d45-e00d-4ba0-9b78-e20b6ffe1722
 
 
 
