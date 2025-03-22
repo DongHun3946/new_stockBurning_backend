@@ -123,16 +123,23 @@ https://github.com/user-attachments/assets/65216202-f400-4c50-acb3-b51d6cce08b5
 https://github.com/user-attachments/assets/f2032d45-e00d-4ba0-9b78-e20b6ffe1722
 
 
-
+---
 ### 5️⃣ 비밀번호 찾기
 
+https://github.com/user-attachments/assets/015e8d13-cf49-487a-addb-bb947f470c04
 
 
+---
 ### 6️⃣ 비밀번호 변경
 
+https://github.com/user-attachments/assets/7a9a03c4-e5de-4bf2-877d-9fba60c39661
 
 
+
+---
 ### 7️⃣ 닉네임 변경
+
+https://github.com/user-attachments/assets/53ca2484-366e-4b55-811f-0161ebcf8ee8
 
 
 
