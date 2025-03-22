@@ -40,7 +40,7 @@ public class Users extends BaseEntity{
 
     @Builder.Default
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PostLikes> postLikes = new ArrayList<>();
+    private List<PostLikes> postLikes = new ArrayList<>(); //수정
 
     @Builder.Default
     @Enumerated(EnumType.STRING)
