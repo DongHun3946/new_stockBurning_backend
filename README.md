@@ -64,6 +64,7 @@
 
 
 ## 📝 구현(화면 구성)
+![1](https://github.com/user-attachments/assets/3f820c2c-b010-46fb-9e14-db44defb3ac2)
 
 
 ## 📌 배운점
