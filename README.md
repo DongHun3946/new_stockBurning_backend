@@ -70,6 +70,9 @@
 - 메인화면 (로그인 상태)
 ![2](https://github.com/user-attachments/assets/46b6c8aa-c023-4ce9-82ac-ee8bed7378df)
 
+- 티커 입력 후 화면
+![image](https://github.com/user-attachments/assets/dfda2536-8d13-4c99-981d-7b9d58919094)
+
 - 로그인 화면
 ![image](https://github.com/user-attachments/assets/d9cd722d-5bb2-498d-b004-3bf7b7171c8f)
 
@@ -90,6 +93,11 @@
 
 - 설정 화면
 ![image](https://github.com/user-attachments/assets/abc130ab-8b0a-4aff-b113-441231857dd1)
+
+## 📝 구현(동영상)
+https://github.com/user-attachments/assets/89e63608-08ec-43e2-be7b-91c9688ee7b2
+
+
 
 ## 📌 배운점
 
