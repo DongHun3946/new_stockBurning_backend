@@ -54,35 +54,35 @@
 ## 📝 와이어프레임(화면 구성)
 ![image](https://github.com/user-attachments/assets/b91347f6-1896-4c67-817a-19519892d63b)
 
-## 📝 구현(화면 구성)
-- 메인화면 (비로그인 상태)
+## 📝 구현(이미지)
+1️⃣ 메인화면 (비로그인 상태)
 ![1](https://github.com/user-attachments/assets/3f820c2c-b010-46fb-9e14-db44defb3ac2)
 
-- 메인화면 (로그인 상태)
+2️⃣ 메인화면 (로그인 상태)
 ![2](https://github.com/user-attachments/assets/46b6c8aa-c023-4ce9-82ac-ee8bed7378df)
 
-- 티커 입력 후 화면
+3️⃣ 티커 입력 후 화면
 ![image](https://github.com/user-attachments/assets/dfda2536-8d13-4c99-981d-7b9d58919094)
 
-- 로그인 화면
+4️⃣ 로그인 화면
 ![image](https://github.com/user-attachments/assets/d9cd722d-5bb2-498d-b004-3bf7b7171c8f)
 
-- 회원가입 화면
+5️⃣ 회원가입 화면
 ![image](https://github.com/user-attachments/assets/d1abe1ea-ecb5-4336-96d3-2728ef2964ea)
 
-- 아이디 찾기 화면
+6️⃣ 아이디 찾기 화면
 ![image](https://github.com/user-attachments/assets/e8d1bed6-9938-4beb-8098-6f0b95205ecc)
 
-- 비밀번호 찾기 화면
+7️⃣ 비밀번호 찾기 화면
 ![image](https://github.com/user-attachments/assets/3acc4b62-6a38-4357-baad-39b6f6d57ded)
 
-- 정보 수정 화면
+8️⃣ 정보 수정 화면
 ![image](https://github.com/user-attachments/assets/d5a4549a-b95a-4fbb-92f4-b0d3485affe9)
 
-- 비밀번호 수정 화면
+9️⃣ 비밀번호 수정 화면
 ![image](https://github.com/user-attachments/assets/b6e7dde4-4894-4e8d-87c5-e0946f2a4d80)
 
-- 설정 화면
+1️⃣0️⃣ 설정 화면
 ![image](https://github.com/user-attachments/assets/abc130ab-8b0a-4aff-b113-441231857dd1)
 
 ## 📝 구현(동영상)
