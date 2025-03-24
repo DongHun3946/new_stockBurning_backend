@@ -48,6 +48,8 @@
 ## 📝 프로젝트 아키텍쳐
 ![stockburning drawio](https://github.com/user-attachments/assets/b5531c2d-fee1-4389-9743-e237ea40946a)
 
+## 📝 ER 다이어그램
+![Untitled](https://github.com/user-attachments/assets/a929f376-abf2-482a-8099-3fb96be51821)
 
 ## 📝 와이어프레임(화면 구성)
 - 전체 구성
