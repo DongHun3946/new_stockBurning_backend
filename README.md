@@ -156,9 +156,10 @@ https://github.com/user-attachments/assets/fb03c64a-4649-4321-8eae-8379a5231f54
 
 
 ## 📌 배운점
+---
 #### ✅ 스프링 시큐리티의 기본적인 구조를 피그마로 직접 그려가며 이해하였다.
 ![image](https://github.com/user-attachments/assets/8c2c4043-cfaa-4fb8-b035-fb65c621da4f)
-
+---
 #### ✅ Jwt의 기본적인 구조와 accessToken, refreshToken을 메모리, 세션 스토리지, 로컬 스토리지, 쿠키 중 어디에 저장하는게 보안상 안전한지, Jwt를 사용하면서 보안상 조심해야할 점이 저장 위치뿐만 다음과 같은 항목들을 유의해야한다는 점
 1. 서명 알고리즘(none 사용금지)
 2. 유효 기간(길게 하면 보안에 취약)
@@ -166,8 +167,10 @@ https://github.com/user-attachments/assets/fb03c64a-4649-4321-8eae-8379a5231f54
 4. CORS 설정
 5. CSRF 공격 방지를 위해 SameSite = strict로 설정![image](https://github.com/user-attachments/assets/3b7a48e4-4e71-4bba-b259-b33e6326f4fa)
 6. refreshToken은 HttpOnly Secure Cookie 사용 ![image](https://github.com/user-attachments/assets/5fea2313-12a7-421e-af52-b98d2af4824b)
-
-
+![image](https://github.com/user-attachments/assets/4bf89764-523b-4bb9-9ead-8c64cb140958)
+---
+#### ✅ 사용자가 OAuth2 를 통해 로그인할 때 어떤 로직을 통해 인증을 하는지 피그마로 직접 그려가며 이해하였다. 
+![image](https://github.com/user-attachments/assets/1be14263-8b78-4921-87cf-0b3f30a62282)
 
 
 
