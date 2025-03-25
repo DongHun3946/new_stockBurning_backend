@@ -160,7 +160,7 @@ https://github.com/user-attachments/assets/fb03c64a-4649-4321-8eae-8379a5231f54
 ![image](https://github.com/user-attachments/assets/8c2c4043-cfaa-4fb8-b035-fb65c621da4f)
 
 #### ✅ Jwt의 기본적인 구조와 accessToken, refreshToken을 메모리, 세션 스토리지, 로컬 스토리지, 쿠키 중 어디에 저장하는게 보안상 안전한지, Jwt를 사용하면서 보안상 조심해야할 점이 저장 위치뿐만 다음과 같은 항목들을 유의해야한다는 점
-1. 서명 알고리즘(none 사용금지, RS256)
+1. 서명 알고리즘(none 사용금지)
 2. 유효 기간(길게 하면 보안에 취약)
 3. Payload는 데이터가 노출되므로 민감한 정보는 저장하지 않기
 4. CORS 설정
