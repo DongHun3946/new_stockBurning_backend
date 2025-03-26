@@ -44,7 +44,7 @@ public class SecurityConfig{
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                                .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
+                                .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() //OPTION : 다른 도메인으로 요청할 때 이 요청을 허용할지 서버에 확인하기 위한 요청
                                 .requestMatchers("/api/**").permitAll()
                                 .anyRequest().authenticated());
 
