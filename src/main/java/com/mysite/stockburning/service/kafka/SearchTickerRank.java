@@ -15,11 +15,9 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class SearchTickerRank {
     private final StringRedisTemplate redisTemplate;
-    private final StockOpinionService stockOpinionService;
+
     private final static String SEARCH_RANKING_KEY = "stock_search_ranking";
-    private final static String POST_COUNT_KEY = "stock_post_count";
-    private final static String BULLISH_OPINION = "stock_bullish_opinion";
-    private final static String BEARISH_OPINION = "stock_bearish_opinion";
+
     public void increaseSearchCount(String ticker){
         redisTemplate.opsForZSet().incrementScore(SEARCH_RANKING_KEY, ticker, 1);
     }
