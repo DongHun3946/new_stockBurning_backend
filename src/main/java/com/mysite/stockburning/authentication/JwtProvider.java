@@ -190,7 +190,7 @@ public class JwtProvider {
         //기존 refreshToken 삭제
         Cookie originalCookie = new Cookie("refreshToken", null);
         originalCookie.setHttpOnly(true);
-        originalCookie.setSecure(false);
+        originalCookie.setSecure(true);
         originalCookie.setPath("/");
         originalCookie.setMaxAge(0);
         response.addCookie(originalCookie);
@@ -198,7 +198,7 @@ public class JwtProvider {
         //새로운 refreshToken, accessToken 생성
         Cookie cookie = new Cookie("refreshToken", tokenResponse.refreshToken());
         cookie.setHttpOnly(true);      //js 에서 쿠키에 접근할 수 없도록 함(xss 공격 방지)
-        cookie.setSecure(false);        //https 연결에서만 쿠키 전송
+        cookie.setSecure(true);        //https 연결에서만 쿠키 전송
         cookie.setPath("/");           //쿠키가 적용될 경로
         cookie.setMaxAge(60*60*24*30); //쿠키 유효 기간(30일)
         cookie.setAttribute("SameSite", "Lax"); //외부사이트에서 요청할 경우 쿠키를 전송하지 않도록 설정 (CSRF 공격 방지)
@@ -240,10 +240,10 @@ public class JwtProvider {
         Cookie cookie = new Cookie("refreshToken", refreshToken);
 
         cookie.setHttpOnly(true);      //js 에서 쿠키에 접근할 수 없도록 함(xss 공격 방지)
-        cookie.setSecure(false);       //https 연결에서만 쿠키 전송 true -> https, false -> http
+        cookie.setSecure(true);       //https 연결에서만 쿠키 전송 true -> https, false -> http
         cookie.setPath("/");           //쿠키가 적용될 경로
         cookie.setMaxAge(60*60*24*30); //쿠키 유효 기간(30일)
-        cookie.setAttribute("SameSite", "Lax"); //Strict 외부사이트에서 요청할 경우 쿠키를 전송하지 않도록 설정 (CSRF 공격 방지)
+        cookie.setAttribute("SameSite", "Strict"); //Strict 외부사이트에서 요청할 경우 쿠키를 전송하지 않도록 설정 (CSRF 공격 방지)
 
         response.addCookie(cookie);
     }
