@@ -29,6 +29,13 @@
 - 프록시 : nginx
 - CI/CD : Jenkins
 - 인증 및 권한 부여 : Oauth2, JWT
+---
+## 🔸Kafka
+실시간 종목 검색 이벤트를 처리하는데 사용
+- ### Prodcuer : 사용자가 검색한 티커를 Kafka의 "stock_search_topic" 토픽으로 비동기 전송한다.
+- ### Consumer : Kafka 에서 "stock_search_topic" 토픽을 구독하여 새로운 검색 이벤트가 발생하면 자동으로 수신한다 -> 수신한 ticker 데이터를 Redis를 사용하여 검색 횟수 증가 및 검색 순위를 출력한다.
+## 🔸Redis
+
   
 ## 🚀 StockBurning 웹사이트 주요 기능
 
