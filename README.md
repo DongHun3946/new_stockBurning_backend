@@ -45,53 +45,44 @@
 - Kafka & Redis를 활용해 10분 단위로 검색량 랭킹 반영
 - 사용자들이 상승 의견에 배팅한 상위 3 종목 순위 제공
 
-## 📝 프로젝트 아키텍쳐
+## 📝 시스템 아키텍쳐
+![stockburning drawio](https://github.com/user-attachments/assets/b5531c2d-fee1-4389-9743-e237ea40946a)
 
+## 📝 ER 다이어그램
+![Untitled](https://github.com/user-attachments/assets/a929f376-abf2-482a-8099-3fb96be51821)
 
 ## 📝 와이어프레임(화면 구성)
-- 전체 구성
 ![image](https://github.com/user-attachments/assets/b91347f6-1896-4c67-817a-19519892d63b)
 
-- 세부 구성
-![image](https://github.com/user-attachments/assets/28e8bf42-082d-438f-86fb-b9b26d9201a9)
-![image](https://github.com/user-attachments/assets/e2f64f50-945e-4b04-9f88-c969d7b2da80)
-![image](https://github.com/user-attachments/assets/9d59f301-728b-4726-880e-183130875d0a)
-![image](https://github.com/user-attachments/assets/5384869c-1a8e-4dde-a4d3-83d1349d09de)
-![image](https://github.com/user-attachments/assets/4aa8f516-9ba0-43c5-ba48-ba99f5fdd115)
-![image](https://github.com/user-attachments/assets/b954317e-d64e-4ed7-a64e-64214e24f935)
-![image](https://github.com/user-attachments/assets/70a391fe-d34f-4feb-8c06-00b60d75327b)
-![image](https://github.com/user-attachments/assets/00c0b3f0-3d6e-4998-b4f1-b71107ddce1b)
-
-
-## 📝 구현(화면 구성)
-- 메인화면 (비로그인 상태)
+## 📝 구현(이미지)
+1️⃣ 메인화면 (비로그인 상태)
 ![1](https://github.com/user-attachments/assets/3f820c2c-b010-46fb-9e14-db44defb3ac2)
 
-- 메인화면 (로그인 상태)
+2️⃣ 메인화면 (로그인 상태)
 ![2](https://github.com/user-attachments/assets/46b6c8aa-c023-4ce9-82ac-ee8bed7378df)
 
-- 티커 입력 후 화면
+3️⃣ 티커 입력 후 화면
 ![image](https://github.com/user-attachments/assets/dfda2536-8d13-4c99-981d-7b9d58919094)
 
-- 로그인 화면
+4️⃣ 로그인 화면
 ![image](https://github.com/user-attachments/assets/d9cd722d-5bb2-498d-b004-3bf7b7171c8f)
 
-- 회원가입 화면
+5️⃣ 회원가입 화면
 ![image](https://github.com/user-attachments/assets/d1abe1ea-ecb5-4336-96d3-2728ef2964ea)
 
-- 아이디 찾기 화면
+6️⃣ 아이디 찾기 화면
 ![image](https://github.com/user-attachments/assets/e8d1bed6-9938-4beb-8098-6f0b95205ecc)
 
-- 비밀번호 찾기 화면
+7️⃣ 비밀번호 찾기 화면
 ![image](https://github.com/user-attachments/assets/3acc4b62-6a38-4357-baad-39b6f6d57ded)
 
-- 정보 수정 화면
+8️⃣ 정보 수정 화면
 ![image](https://github.com/user-attachments/assets/d5a4549a-b95a-4fbb-92f4-b0d3485affe9)
 
-- 비밀번호 수정 화면
+9️⃣ 비밀번호 수정 화면
 ![image](https://github.com/user-attachments/assets/b6e7dde4-4894-4e8d-87c5-e0946f2a4d80)
 
-- 설정 화면
+1️⃣0️⃣ 설정 화면
 ![image](https://github.com/user-attachments/assets/abc130ab-8b0a-4aff-b113-441231857dd1)
 
 ## 📝 구현(동영상)
@@ -142,19 +133,44 @@ https://github.com/user-attachments/assets/7a9a03c4-e5de-4bf2-877d-9fba60c39661
 https://github.com/user-attachments/assets/53ca2484-366e-4b55-811f-0161ebcf8ee8
 
 
-
+---
 ### 8️⃣ 프로필 사진 변경
 
+https://github.com/user-attachments/assets/810fc231-b5c7-477b-b2f2-1053d857dcc7
 
 
+---
 ### 9️⃣ 계정 탈퇴
+
+https://github.com/user-attachments/assets/efe74dc0-174c-4f41-aef4-d7a38c7e0f94
+
+
+
+---
+### 9️⃣ 좋아요 기능 및 댓글 작성
+
+https://github.com/user-attachments/assets/fb03c64a-4649-4321-8eae-8379a5231f54
+
+
 
 
 
 ## 📌 배운점
-
-
-
+---
+#### ✅ 스프링 시큐리티의 기본적인 구조를 피그마로 직접 그려가며 이해하였다.
+![image](https://github.com/user-attachments/assets/8c2c4043-cfaa-4fb8-b035-fb65c621da4f)
+---
+#### ✅ Jwt의 기본적인 구조와 accessToken, refreshToken을 메모리, 세션 스토리지, 로컬 스토리지, 쿠키 중 어디에 저장하는게 보안상 안전한지, Jwt를 사용하면서 보안상 조심해야할 점이 저장 위치뿐만 다음과 같은 항목들을 유의해야한다는 점
+1. 서명 알고리즘(none 사용금지)
+2. 유효 기간(길게 하면 보안에 취약)
+3. Payload는 데이터가 노출되므로 민감한 정보는 저장하지 않기
+4. CORS 설정
+5. CSRF 공격 방지를 위해 SameSite = strict로 설정![image](https://github.com/user-attachments/assets/3b7a48e4-4e71-4bba-b259-b33e6326f4fa)
+6. refreshToken은 HttpOnly Secure Cookie 사용 ![image](https://github.com/user-attachments/assets/5fea2313-12a7-421e-af52-b98d2af4824b)
+![image](https://github.com/user-attachments/assets/4bf89764-523b-4bb9-9ead-8c64cb140958)
+---
+#### ✅ 사용자가 OAuth2 를 통해 로그인할 때 어떤 로직을 통해 인증을 하는지 피그마로 직접 그려가며 이해하였다. 
+![image](https://github.com/user-attachments/assets/1be14263-8b78-4921-87cf-0b3f30a62282)
 
 
 
