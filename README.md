@@ -181,7 +181,7 @@ https://github.com/user-attachments/assets/fb03c64a-4649-4321-8eae-8379a5231f54
 6. refreshToken은 HttpOnly Secure Cookie 사용 ![image](https://github.com/user-attachments/assets/5fea2313-12a7-421e-af52-b98d2af4824b)
 ![image](https://github.com/user-attachments/assets/4bf89764-523b-4bb9-9ead-8c64cb140958)
 ---
-#### ✅ 사용자가 OAuth2 를 통해 로그인할 때 어떤 로직을 통해 인증을 하는지 피그마로 직접 그려가며 이해하였다. 
+#### ✅ 사용자가 OAuth2 를 통해 로그인할 때 어떤 로직을 통해 인증을 하는지 피그마로 직접 그려가며 이해하였으며 맨 처음 카카오 로그인페이지에 접속하는 것부터 Authorization Server 에 AccessToken을 요청하고 발급받고 다시 Resource Server에 AccessToken을 통해 사용자 정보를 요청하는 과정 모두 직접 구현하지 않아도 SecurityConfig 에 추가적으로 Oauth2 관련 코드를 작성하면 소셜 로그인을 구현할 수 있다는 것을 알게 되었다.  
 ![image](https://github.com/user-attachments/assets/1be14263-8b78-4921-87cf-0b3f30a62282)
 
 
