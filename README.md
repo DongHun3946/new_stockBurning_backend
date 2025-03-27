@@ -61,7 +61,7 @@
 ![stockburning drawio](https://github.com/user-attachments/assets/b5531c2d-fee1-4389-9743-e237ea40946a)
 
 ## 📝 ER 다이어그램
-![Untitled](https://github.com/user-attachments/assets/a929f376-abf2-482a-8099-3fb96be51821)
+![Untitled](https://github.com/user-attachments/assets/2adf2b70-2f55-40cc-81e6-f360a93d4940)
 
 ## 📝 와이어프레임(화면 구성)
 ![image](https://github.com/user-attachments/assets/b91347f6-1896-4c67-817a-19519892d63b)
