@@ -89,8 +89,8 @@ public class UserModifyController {
         }
     }
     private void setUserInfoAtJwt(HttpServletResponse response, Users updatedUser){
-        TokenResponse tokenResponse = jwtUtil.getToken(updatedUser.getId(), updatedUser.getNickName(), updatedUser.getUserId(), updatedUser.getRole(), updatedUser.getProfilePicture(), String.valueOf(updatedUser.getProviderType()));
+        TokenResponse tokenResponse = jwtUtil.getToken(updatedUser.getId(), updatedUser.getNickName(), updatedUser.getRole(), updatedUser.getProviderType());
         response.setHeader("Authorization", "Bearer " + tokenResponse.accessToken());
-        jwtUtil.setRefreshTokenCookie(response, tokenResponse.refreshToken());
+        jwtUtil.setRefreshToken(response, tokenResponse.refreshToken());
     }
 }

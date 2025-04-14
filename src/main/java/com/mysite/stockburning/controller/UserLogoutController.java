@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserLogoutController {
     private final JwtUtil jwtUtil;
 
-    @PreAuthorize("isAuthenticated()")
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletResponse response){
         try{
