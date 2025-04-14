@@ -3,7 +3,7 @@ package com.mysite.stockburning.controller;
 
 import com.mysite.stockburning.authentication.CustomOAuth2User;
 import com.mysite.stockburning.authentication.CustomUserDetails;
-import com.mysite.stockburning.authentication.JwtProvider;
+import com.mysite.stockburning.authentication.JwtUtil;
 import com.mysite.stockburning.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/user")
 public class UserDeleteController {
     private final UserService userService;
-    private final JwtProvider jwtProvider;
+    private final JwtUtil jwtUtil;
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteUser(HttpServletResponse response,
                                            @AuthenticationPrincipal CustomUserDetails customUserDetails,
@@ -39,7 +39,7 @@ public class UserDeleteController {
             log.info("4444444");
             userService.deleteUser(id);
             log.info("5555555");
-            jwtProvider.removeRefreshToken(response);
+            jwtUtil.removeRefreshToken(response);
             return ResponseEntity.status(HttpStatus.OK).build();
         }catch(Exception e){
             log.error("회원 탈퇴 중 에러발생 : ", e);

@@ -28,7 +28,4 @@ public class BankRates extends  BaseEntity {
     @Column(nullable = true)
     private String nextMeeting;
 
-
-    public BankRates(String country, String bankTicker, String currentRate, String nextMeeting) {
-    }
 }

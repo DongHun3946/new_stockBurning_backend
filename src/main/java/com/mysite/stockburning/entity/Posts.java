@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -34,7 +36,7 @@ public class Posts extends BaseEntity{
 
     @Builder.Default
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PostLikes>  likes = new ArrayList<>();
+    private Set<PostLikes> likes = new HashSet<>();
 
     @Column(columnDefinition = "VARCHAR(255)")
     private String imagePath;

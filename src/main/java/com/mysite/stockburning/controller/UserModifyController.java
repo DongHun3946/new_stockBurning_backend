@@ -2,20 +2,17 @@ package com.mysite.stockburning.controller;
 
 import com.mysite.stockburning.authentication.CustomOAuth2User;
 import com.mysite.stockburning.authentication.CustomUserDetails;
-import com.mysite.stockburning.authentication.JwtProvider;
+import com.mysite.stockburning.authentication.JwtUtil;
 import com.mysite.stockburning.dto.request.ModifyRequest;
 import com.mysite.stockburning.dto.request.PasswordRequest;
-import com.mysite.stockburning.dto.response.ModifyResponse;
 import com.mysite.stockburning.dto.response.PasswordResponse;
 import com.mysite.stockburning.dto.response.TokenResponse;
 import com.mysite.stockburning.entity.Users;
 import com.mysite.stockburning.service.S3Service;
 import com.mysite.stockburning.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.impl.bootstrap.HttpServer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserModifyController {
     private final UserService userService;
     private final S3Service s3Service;
-    private final JwtProvider jwtProvider;
+    private final JwtUtil jwtUtil;
     @PutMapping("/user/{userId}")
     public ResponseEntity<Void> modifyUserInfo(HttpServletResponse response,
                                                @PathVariable("userId") String userid,
@@ -92,8 +89,8 @@ public class UserModifyController {
         }
     }
     private void setUserInfoAtJwt(HttpServletResponse response, Users updatedUser){
-        TokenResponse tokenResponse = jwtProvider.getToken(updatedUser.getId(), updatedUser.getNickName(), updatedUser.getUserId(), updatedUser.getRole(), updatedUser.getProfilePicture(), String.valueOf(updatedUser.getProviderType()));
+        TokenResponse tokenResponse = jwtUtil.getToken(updatedUser.getId(), updatedUser.getNickName(), updatedUser.getUserId(), updatedUser.getRole(), updatedUser.getProfilePicture(), String.valueOf(updatedUser.getProviderType()));
         response.setHeader("Authorization", "Bearer " + tokenResponse.accessToken());
-        jwtProvider.setRefreshTokenCookie(response, tokenResponse.refreshToken());
+        jwtUtil.setRefreshTokenCookie(response, tokenResponse.refreshToken());
     }
 }

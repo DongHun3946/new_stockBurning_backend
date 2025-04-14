@@ -13,5 +13,5 @@ public class UserInfoDTO {
     private String nickName;
     private String userId;
     private String profilePicture;
-    private String role;
+    private UserRole role;
 }

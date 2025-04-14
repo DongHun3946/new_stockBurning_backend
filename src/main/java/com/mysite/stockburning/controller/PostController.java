@@ -28,7 +28,8 @@ public class PostController {
     private final PostService postService;
     private final S3Service s3Service;
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/create")
     public ResponseEntity<?> createPost(@RequestPart("postData") PostCreateRequest request,
                                         @RequestPart(value="image", required = false) MultipartFile file,
@@ -62,7 +63,8 @@ public class PostController {
                     .body("게시글 작성 중 서버 오류가 발생했습니다.");
         }
     }
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @PutMapping("/update/{postId}")
     public ResponseEntity<?> modifyPost(@PathVariable("postId") Long postId,
                                         @RequestPart("postData") PostUpdateRequest request,
@@ -99,7 +101,8 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/delete/{postId}")
     public ResponseEntity<Void> deletePost(@PathVariable("postId") Long postId,
                                            @AuthenticationPrincipal CustomUserDetails customUserDetails,
@@ -108,10 +111,12 @@ public class PostController {
         boolean isDeleted = false;
         if(customUserDetails != null){
             CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+            System.out.println("일반 로그인 사용자입니다: " + userDetails.getUsername());
             isDeleted = postService.delete(postId, userDetails.getId());
         }
         if(customOAuth2User != null){
             CustomOAuth2User oauth2User = (CustomOAuth2User) authentication.getPrincipal();
+            System.out.println("OAuth2 로그인 사용자입니다: " + oauth2User.getName());
             isDeleted = postService.delete(postId, oauth2User.getId());
         }
 
@@ -122,6 +127,7 @@ public class PostController {
         }
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/like/{postId}")
     public ResponseEntity<Void> postLike(@PathVariable("postId") Long postId,
                                          @AuthenticationPrincipal CustomUserDetails customUserDetails,

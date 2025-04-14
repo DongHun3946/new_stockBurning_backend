@@ -1,6 +1,7 @@
 package com.mysite.stockburning.controller;
 
-import com.mysite.stockburning.authentication.JwtProvider;
+import com.mysite.stockburning.authentication.CustomUserDetails;
+import com.mysite.stockburning.authentication.JwtUtil;
 import com.mysite.stockburning.dto.UserInfoDTO;
 import com.mysite.stockburning.dto.request.LoginRequest;
 import com.mysite.stockburning.dto.response.LoginResponse;
@@ -16,60 +17,71 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-@Tag(name = "로그인") //Swagger 문서에서 이 컨트롤러를 "로그인" 섹션으로 그룹화
+@Slf4j
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class UserLoginController {
+    private final JwtUtil jwtUtil;
+    private final AuthenticationManager authenticationManager;
     private final UserService userService;
-    private final JwtProvider tokenProvider;
 
-    @Operation(summary = "StockBurning 자체 로그인")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "로그인 성공"),
-            @ApiResponse(responseCode = "400", description = "잘못된 인증 요청"),
-            @ApiResponse(responseCode = "401", description = "인증 실패")
-    })
     @PostMapping("/login")
     public ResponseEntity<UserInfoDTO> login(@Valid @RequestBody LoginRequest request,
-                                        HttpServletResponse response) throws IOException {
-        LoginResponse loginResponse = userService.login(request); //사용자 정보 인증확인
-        TokenResponse tokenResponse = tokenProvider.getToken(loginResponse.id(), loginResponse.nickName(), loginResponse.userId(), loginResponse.role(), loginResponse.profileImageUrl(), String.valueOf(ProviderType.LOCAL));
-        response.setHeader("Authorization", "Bearer " + tokenResponse.accessToken());
-        setRefreshTokenCookie(response, tokenResponse.refreshToken());
+                                             HttpServletResponse response) {
+        log.info("[UserLoginController] - 로그인 시도");
+        //1. 인증 전 상태
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(request.userId(), request.userPw());
 
-        UserInfoDTO userInfoDTO = new UserInfoDTO(loginResponse.id(), loginResponse.nickName(), loginResponse.userId(), loginResponse.profileImageUrl(), String.valueOf(loginResponse.role()));
+        try{
+            log.info("[UserLoginController] - AuthenticationManager 에서 인증 시도");
+            //2. 인증 수행
+            Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
-        return ResponseEntity.ok().body(userInfoDTO);
+            log.info("[UserLoginController] - DaoAuthenticationProvider 에서 객체를 반환받음");
+            //3. 인증 객체 저장
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            log.info("[UserLoginController] - SecurityContextHolder 에 객체 저장");
+
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            TokenResponse tokenResponse = jwtUtil.getToken(userDetails.getId(), userDetails.getNickName(), userDetails.getUserRole(), userDetails.getProviderType());
+
+            response.setHeader("Authorization", "Bearer " + tokenResponse.accessToken());
+            jwtUtil.setRefreshToken(response, tokenResponse.refreshToken());
+            String userId = userService.getUserId(userDetails.getId());
+            String profilePicture = userService.getProfilePicture(userDetails.getId());
+            UserInfoDTO userInfoDTO = new UserInfoDTO(userDetails.getId(), userDetails.getNickName(), userId, profilePicture, userDetails.getUserRole());
+            return ResponseEntity.ok().body(userInfoDTO);
+        }catch(AuthenticationException e){
+            log.error("인증 실패 :  {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
     }
     @PostMapping("/reissue")
     public ResponseEntity<?> reissueToken(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String refreshToken = tokenProvider.getRefreshTokenFromCookie(request);
-            tokenProvider.reissueAllTokens(response, refreshToken);
+            String refreshToken = jwtUtil.getRefreshTokenFromCookie(request);
+            jwtUtil.reissueAllTokens(response, refreshToken);
             return ResponseEntity.status(HttpStatus.OK)
                     .body("토큰 재발급 완료");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("토큰 재발급 중 에러: " + e.getMessage());
         }
-    }
-
-    private void setRefreshTokenCookie(HttpServletResponse response, String refreshToken){
-        Cookie cookie = new Cookie("refreshToken", refreshToken);
-
-        cookie.setHttpOnly(true);      //js 에서 쿠키에 접근할 수 없도록 함(xss 공격 방지)
-        cookie.setSecure(false);       //https 연결에서만 쿠키 전송 true -> https, false -> http
-        cookie.setPath("/");           //쿠키가 적용될 경로
-        cookie.setMaxAge(60*60*24*30); //쿠키 유효 기간(30일)
-        cookie.setAttribute("SameSite", "Lax"); //Strict 외부사이트에서 요청할 경우 쿠키를 전송하지 않도록 설정 (CSRF 공격 방지)
-
-        response.addCookie(cookie);
     }
 }

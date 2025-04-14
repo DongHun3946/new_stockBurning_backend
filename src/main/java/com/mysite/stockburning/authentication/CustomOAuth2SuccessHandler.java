@@ -1,8 +1,6 @@
 
 package com.mysite.stockburning.authentication;
 
-import com.mysite.stockburning.authentication.JwtProvider;
-import com.mysite.stockburning.authentication.CustomOAuth2User;
 import com.mysite.stockburning.dto.response.LoginResponse;
 import com.mysite.stockburning.dto.response.TokenResponse;
 import com.mysite.stockburning.service.UserService;
@@ -23,7 +21,7 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    private final JwtProvider jwtProvider;
+    private final JwtUtil jwtUtil;
     private final UserService userService;
 
     @Value("${app.base.url}")
@@ -39,7 +37,7 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
         Long providerId = oAuth2User.getProviderId();
         ProviderType providerType = oAuth2User.getProviderType();
         LoginResponse loginResponse = userService.loginAsOauth2(providerType, providerId);
-        TokenResponse tokenResponse = jwtProvider.getToken(loginResponse.id(), loginResponse.nickName(), loginResponse.userId(), loginResponse.role(), loginResponse.profileImageUrl(), String.valueOf(ProviderType.KAKAO));
+        TokenResponse tokenResponse = jwtUtil.getToken(loginResponse.id(), loginResponse.nickName(), loginResponse.role(), providerType);
 
         response.setHeader("Authorization", "Bearer " + tokenResponse.accessToken());
         setRefreshTokenCookie(response, tokenResponse.refreshToken());

@@ -35,7 +35,6 @@ public class CommentController {
             PostDTO postDTO = PostDTO.getFromEntity(post);
             List<CommentDTO> commentDTOList = CommentDTO.getFromEntity(comments);
             PostAndCommentsDTO postAndCommentsDTO = new PostAndCommentsDTO(postDTO,commentDTOList);
-            System.out.println("댓글 전송");
             return ResponseEntity.ok(postAndCommentsDTO);
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

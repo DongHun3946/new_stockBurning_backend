@@ -1,6 +1,5 @@
 package com.mysite.stockburning.service;
 
-import com.mysite.stockburning.authentication.JwtProvider;
 import com.mysite.stockburning.authentication.PasswordEncryptor;
 import com.mysite.stockburning.dto.request.*;
 import com.mysite.stockburning.dto.response.LoginResponse;
@@ -14,11 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -74,7 +70,18 @@ public class UserService {
                 .orElseThrow(()->new BadRequestException("존재하지 않는 유저정보입니다."));
         return user.getUserId();
     }
-
+    @Transactional(readOnly = true)
+    public String getUserId(Long id){
+        Users user = userRepository.findById(id)
+                .orElseThrow(()->new BadRequestException("존재하지 않는 유저정보입니다."));
+        return user.getUserId();
+    }
+    @Transactional(readOnly = true)
+    public String getProfilePicture(Long id){
+        Users user = userRepository.findById(id)
+                .orElseThrow(()->new BadRequestException("존재하지 않는 유저정보입니다."));
+        return user.getProfilePicture();
+    }
     @Transactional
     public Users modifyNickNameOrEmail(String userId, ModifyRequest request){
         Users user = userRepository.findByUserId(userId)
@@ -116,17 +123,13 @@ public class UserService {
     public void deleteUser(Long id){
         Users user = userRepository.findById(id).orElse(null);
         assert user!=null;
-        if(!user.getProfilePicture().equals("default_img")){
-            log.info("1111111");
+        if(!user.getProfilePicture().equals("default_img"))
             s3Service.deleteS3Image(user.getProfilePicture());
-        }
+
         for(Posts post : user.getPosts()){
-            log.info("2222222");
-            if(post.getImagePath() != null){
-                s3Service.deleteS3Image(post.getImagePath());
-            }
+            s3Service.deleteS3Image(post.getImagePath());
         }
-        log.info("3333333");
+
         this.userRepository.delete(user);
     }
     public void validateRequest(SignupRequest request){ //유효성 검사 메소드
@@ -159,13 +162,14 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
     public boolean isPasswordValid(String userId, String rawPassword) {
-      Users user = userRepository.findByUserId(userId)
+        Users user = userRepository.findByUserId(userId)
                 .orElseThrow(()->new BadRequestException("(UserService)존재하지 않는 사용자 정보입니다."));
 
-      boolean isValidPassword = passwordEncryptor.matches(rawPassword, user.getUserPw());
-      if(isValidPassword)
-          return true;
-      else
-          return false;
+        boolean isValidPassword = passwordEncryptor.matches(rawPassword, user.getUserPw());
+        if(isValidPassword)
+            return true;
+        else
+            return false;
     }
 }
+
