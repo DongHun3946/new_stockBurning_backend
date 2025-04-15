@@ -33,12 +33,12 @@ public class StockApiService {
         }
     }
     //value = 캐시이름, key = 캐시 키
-    @CachePut(value="stockCacheQQQ", key="'stockIndexQQQ'")
+    @CachePut(value="stockCache", key="'stockIndexQQQ'")
     public QQQIndexDTO getCachedQQQData(){
         return cachedQQQData;
     }
 
-    @CachePut(value="stockCacheSPY", key="'stockIndexSPY'")
+    @CachePut(value="stockCache", key="'stockIndexSPY'")
     public SPYIndexDTO getCachedSPYData(){
         return cachedSPYData;
     }
