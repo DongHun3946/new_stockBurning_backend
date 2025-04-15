@@ -62,6 +62,8 @@
 
 ## 📝 ER 다이어그램
 ![Untitled](https://github.com/user-attachments/assets/2adf2b70-2f55-40cc-81e6-f360a93d4940)
+## 📝 로그인 후 API 요청까지 표현한 시퀀스 다이어그램
+![image](https://github.com/user-attachments/assets/d95c7740-41e3-439e-87fd-5bc172bab6fe)
 
 ## 📝 와이어프레임(화면 구성)
 ![image](https://github.com/user-attachments/assets/b91347f6-1896-4c67-817a-19519892d63b)
