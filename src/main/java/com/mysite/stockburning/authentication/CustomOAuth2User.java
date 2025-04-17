@@ -7,10 +7,12 @@ import com.mysite.stockburning.util.UserRole;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 //OAuth2 로그인 후 사용자 정보를 담기 위해 사용
@@ -28,13 +30,14 @@ public class CustomOAuth2User implements OAuth2User {
     @Getter
     private final ProviderType providerType;
 
-    private final Collection<? extends  GrantedAuthority> authorities;
-    public CustomOAuth2User(Long id, String nickName, Long providerId, Collection<? extends GrantedAuthority> authorities){
+    @Getter
+    private final UserRole userRole;
+    public CustomOAuth2User(Long id, String nickName, Long providerId){
         this.id = id;
         this.nickName = nickName;
         this.providerId = providerId;
+        this.userRole = UserRole.USER;
         this.providerType = ProviderType.KAKAO;
-        this.authorities = authorities;
     }
     @Override
     public Map<String, Object> getAttributes() {
@@ -43,7 +46,7 @@ public class CustomOAuth2User implements OAuth2User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return Collections.singletonList(new SimpleGrantedAuthority(userRole.getValue()));
     }
 
     @Override

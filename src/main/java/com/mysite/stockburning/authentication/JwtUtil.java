@@ -35,44 +35,17 @@ public class JwtUtil {
     private static final String USER_NICK = "userNickName";
     private static final String PROVIDER_TYPE = "providerType";
 
-    private final CustomUserDetailsService customUserDetailsService;
-    private final CustomOAuth2UserService customOAuth2UserService;
 
-    private final UserService userService;
     public JwtUtil(CustomUserDetailsService customUserDetailsService,
                    CustomOAuth2UserService customOAuth2UserService,
                    @Value("${security.jwt.token.secret-key}") String accessSecretKey,
                    @Value("${security.jwt.refresh.secret-key}") String refreshSecretKey,
                    @Value("${security.jwt.token.expiration}") Long accessExpiration,
                    @Value("${security.jwt.refresh.expiration}") Long refreshExpiration, UserService userService) {
-        this.customUserDetailsService = customUserDetailsService;
-        this.customOAuth2UserService = customOAuth2UserService;
         this.accessSecretKey = new SecretKeySpec(accessSecretKey.getBytes(StandardCharsets.UTF_8), SignatureAlgorithm.HS256.getJcaName());
         this.accessExpiration = accessExpiration;
         this.refreshSecretKey = new SecretKeySpec(refreshSecretKey.getBytes(StandardCharsets.UTF_8), SignatureAlgorithm.HS256.getJcaName());
         this.refreshExpiration = refreshExpiration;
-        this.userService = userService;
-    }
-
-    //AccessToken 을 검증하고 Spring Security 의 인증 객체(Authentication)을 생성
-    public Authentication getAuthentication(String accessToken){
-        Claims claims = Jwts.parserBuilder()
-                .setSigningKey(accessSecretKey)
-                .build()
-                .parseClaimsJws(accessToken)
-                .getBody();
-        Long id = Long.valueOf(claims.getSubject());
-        String userId = userService.getUserId(id);
-        String providerType = claims.get(PROVIDER_TYPE, String.class);
-
-        if(providerType.equals("LOCAL")){        // 자체 로그인 서비스를 이용한 경우
-            CustomUserDetails customUserDetails = customUserDetailsService.loadUserByUsername(userId);
-            return new UsernamePasswordAuthenticationToken(customUserDetails, null);
-        }else if(providerType.equals("KAKAO")){  //카카오 소셜 로그인 서비스를 이용한 경우
-            CustomOAuth2User customOAuth2User = customOAuth2UserService.loadUserById(id);
-            return new OAuth2AuthenticationToken(customOAuth2User, customOAuth2User.getAuthorities(), customOAuth2User.getName());
-        }
-        return null;
     }
     /*----------------------------JWT 토큰 생성------------------------------------*/
     private String createToken(Long id, String nickName, UserRole userRole, ProviderType providerType, SecretKey secretKey, long expiration) {
@@ -98,7 +71,6 @@ public class JwtUtil {
     }
     // 쿠키에서 refreshToken 가져오기
     public String getRefreshTokenFromCookie(HttpServletRequest request) {
-
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -111,7 +83,9 @@ public class JwtUtil {
     }
     // 요청 헤더로부터 accessToken 가져오기
     public String getAccessTokenFromHeader(HttpServletRequest request) {
+        log.info("[JwtUtil] - accessToken 검증 시작");
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
+        log.info("[JwtUtil] - {}", token);
         if (token != null && token.startsWith("Bearer ")) {
             return token.substring(7);  // "Bearer " 제거
         }

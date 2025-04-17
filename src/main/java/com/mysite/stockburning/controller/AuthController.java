@@ -2,6 +2,8 @@ package com.mysite.stockburning.controller;
 
 import com.mysite.stockburning.authentication.JwtUtil;
 import com.mysite.stockburning.dto.UserInfoDTO;
+import com.mysite.stockburning.service.UserService;
+import com.mysite.stockburning.util.ProviderType;
 import com.mysite.stockburning.util.UserRole;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +22,7 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthController {
     private final JwtUtil jwtUtil;
+    private final UserService userService;
     //ss
     @PostMapping("/refresh")
     public ResponseEntity<?> refreshAccessToken(HttpServletRequest request, HttpServletResponse response) {
@@ -31,11 +34,10 @@ public class AuthController {
             try{
                 if (jwtUtil.isValidRefreshToken(refreshToken)) {
                     accessToken = jwtUtil.reissueAllTokens(response, refreshToken);
-                    userInfo = jwtUtil.decode(true, accessToken);
                 } else {
                     accessToken = jwtUtil.reissueAccessToken(response, refreshToken);
-                    userInfo = jwtUtil.decode(true, accessToken);
                 }
+                userInfo = jwtUtil.decode(true, accessToken);
             }catch(Exception e){
                 log.error("/api/auth/refresh 처리 도중 에러 발생 : ", e);
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
@@ -47,10 +49,12 @@ public class AuthController {
             }
             Long id = (Long) userInfo.get("id");
             String nickName = String.valueOf(userInfo.get("userNickName"));
-            String userId = String.valueOf(userInfo.get("userId"));
             UserRole role = UserRole.valueOf(String.valueOf(userInfo.get("userRole")));
-            String userImage = String.valueOf(userInfo.get("userImage"));
-            UserInfoDTO userInfoDTO = new UserInfoDTO(id, nickName, userId, userImage, role);
+            ProviderType type = ProviderType.valueOf(String.valueOf(userInfo.get("providerType")));
+            String userId = userService.getUserId(id);
+            String profilePicture = userService.getProfilePicture(id);
+
+            UserInfoDTO userInfoDTO = new UserInfoDTO(id, nickName, userId, profilePicture, role, type);
             return ResponseEntity.status(HttpStatus.OK)
                     .body(userInfoDTO);
 
