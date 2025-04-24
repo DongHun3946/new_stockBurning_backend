@@ -38,6 +38,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 new HttpRequest(HttpMethod.POST, "/api/login"),
                 new HttpRequest(HttpMethod.GET, "/api/login/**"),
                 new HttpRequest(HttpMethod.POST, "/api/logout"),
+                new HttpRequest(HttpMethod.POST, "/api/kakao/logout"),
+                new HttpRequest(HttpMethod.GET, "/"),
                 new HttpRequest(HttpMethod.POST, "/api/auth/refresh"),
                 new HttpRequest(HttpMethod.POST, "/api/signup/**"),
                 new HttpRequest(HttpMethod.GET, "/api/signup/**"),
@@ -58,6 +60,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         //요청 헤더에서 Authorization 헤더 값을 가져옴
         String accessToken = jwtUtil.getAccessTokenFromHeader(request);
         String refreshToken = jwtUtil.getRefreshTokenFromCookie(request);
+
         //accessToken 이 없는 경우
         if(isTokenEmpty(accessToken)){
             sendUnauthorizedResponse(response, "로그인을 해주세요.");
@@ -65,8 +68,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         // 2. accessToken 이 유효한 경우
         if (jwtUtil.isValidAccessToken(accessToken)) {
-            log.info("[JwtFilter] accessToken 유효");
+            log.info("[JwtAuthenticationFilter] - accessToken 유효");
             JwtAuthenticationToken jwtAuthenticationToken = new JwtAuthenticationToken(accessToken);
+            log.info("[JwtAuthenticationFilter] -  jwtAuthenticationToken 생성");
             try{
                 Authentication authentication = jwtAuthenticationProvider.authenticate(jwtAuthenticationToken);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -76,17 +80,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         // 3. accessToken 이 유효하지 않고 refreshToken 이 유효한 경우
         if (jwtUtil.isValidRefreshToken(refreshToken)) {
-            log.info("[JwtFilter] accessToken 만료, refreshToken 유효");
+            log.info("[JwtAuthenticationFilter] - accessToken 만료, refreshToken 유효");
             String newAccessToken = jwtUtil.reissueAllTokens(response, refreshToken);
             JwtAuthenticationToken jwtAuthenticationToken = new JwtAuthenticationToken(newAccessToken);
+            log.info("[JwtAuthenticationFilter] -  jwtAuthenticationToken 생성");
             try{
                 Authentication authentication = jwtAuthenticationProvider.authenticate(jwtAuthenticationToken);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }catch(AuthenticationException e){
                 log.warn("JWT 인증 실패 : {}", e.getMessage());
             }
-        }else{ // refreshToken 이 무효한 경우
-            sendUnauthorizedResponse(response, "로그인을 해주세요.");
+        }
+        else if(!jwtUtil.isValidRefreshToken(refreshToken)){ // refreshToken 이 무효한 경우
+            log.info("refreshToken 무효 -> 재로그인 필요");
+            jwtUtil.removeRefreshToken(response);
+            sendUnauthorizedResponse(response, "refreshToken 유효기간 초과로 인한 재로그인");
             return;
         }
         filterChain.doFilter(request, response);
@@ -96,7 +104,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String method = request.getMethod();
         String requestURI = request.getRequestURI();
         //log.info("Request URI : {}", requestURI);
-        // log.info("Request Method : {}", method);
+        //log.info("Request Method : {}", method);
         return isInWhiteList(method, requestURI);
     }
     private boolean isInWhiteList(String method, String url){
@@ -109,7 +117,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private void sendUnauthorizedResponse(HttpServletResponse response, String message) throws IOException{
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8"); //한국어 메시지를 보내기 위함
         response.getWriter().write("{\"message\": \"" + message + "\"}");
     }
     private boolean isTokenEmpty(String token){

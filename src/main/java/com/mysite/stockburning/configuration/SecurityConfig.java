@@ -1,7 +1,7 @@
 package com.mysite.stockburning.configuration;
 
 import com.mysite.stockburning.authentication.authenticationFilter.JwtAuthenticationFilter;
-import com.mysite.stockburning.authentication.CustomOAuth2SuccessHandler;
+import com.mysite.stockburning.authentication.authenticationSuccessHandler.CustomOAuth2SuccessHandler;
 import com.mysite.stockburning.authentication.CustomOAuth2UserService;
 import com.mysite.stockburning.authentication.authenticationProvider.DaoAuthenticationProvider;
 import com.mysite.stockburning.authentication.authenticationProvider.JwtAuthenticationProvider;

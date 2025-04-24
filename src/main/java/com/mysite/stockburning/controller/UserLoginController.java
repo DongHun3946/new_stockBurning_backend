@@ -38,6 +38,7 @@ public class UserLoginController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
 
+    /*
     @PostMapping("/login")
     public ResponseEntity<UserInfoDTO> login(@Valid @RequestBody LoginRequest request,
                                              HttpServletResponse response) {
@@ -72,6 +73,8 @@ public class UserLoginController {
         }
 
     }
+    */
+
     @PostMapping("/reissue")
     public ResponseEntity<?> reissueToken(HttpServletRequest request, HttpServletResponse response) {
         try {

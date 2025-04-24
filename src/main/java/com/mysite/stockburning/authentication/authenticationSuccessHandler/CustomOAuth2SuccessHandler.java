@@ -1,6 +1,8 @@
 
-package com.mysite.stockburning.authentication;
+package com.mysite.stockburning.authentication.authenticationSuccessHandler;
 
+import com.mysite.stockburning.authentication.CustomOAuth2User;
+import com.mysite.stockburning.authentication.JwtUtil;
 import com.mysite.stockburning.dto.response.LoginResponse;
 import com.mysite.stockburning.dto.response.TokenResponse;
 import com.mysite.stockburning.service.UserService;
