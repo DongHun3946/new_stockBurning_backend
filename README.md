@@ -66,7 +66,7 @@
 ## 📝 로그인 후 API 요청까지 표현한 시퀀스 다이어그램
 ![image](https://github.com/user-attachments/assets/8faa5ded-a37a-4e11-8bcc-de38734ce433)
 
-## 📝 와이어프레임(화면 구성)
+## 📝 목업(화면 구성)
 ![image](https://github.com/user-attachments/assets/b91347f6-1896-4c67-817a-19519892d63b)
 
 ## 📝 구현(이미지)
